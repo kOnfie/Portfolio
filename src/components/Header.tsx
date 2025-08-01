@@ -8,12 +8,12 @@ interface HeaderProps {
 
 const ITEMS = [
   {
-    name: "Projects",
-    href: "#projects",
-  },
-  {
     name: "About",
     href: "#about",
+  },
+  {
+    name: "Projects",
+    href: "#projects",
   },
   {
     name: "Contact",
