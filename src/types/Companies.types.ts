@@ -1,8 +1,3 @@
-export enum EmploymentType {
-  FULL_TIME = "full_time",
-  PART_TIME = "part_time",
-}
-
 export interface CompanyType {
   id: number;
   company_name: string;
@@ -12,5 +7,5 @@ export interface CompanyType {
   company_icon: string | null;
   role: string;
   description?: string | null;
-  employment: EmploymentType;
+  employment: "full_time" | "part_time";
 }

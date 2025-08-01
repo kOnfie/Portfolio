@@ -2,6 +2,7 @@ import cn from "classnames";
 import { Container } from "./ui/Container";
 import { Title } from "./ui/Title";
 import { Copyright, Github, Linkedin, Mail, Send } from "lucide-react";
+import { motion } from "framer-motion";
 
 interface FooterProps {
   className?: string;
@@ -26,21 +27,47 @@ const SOCIAL_MEDIAS = [
   },
 ];
 
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.13, delayChildren: 0.23 },
+  },
+};
+
+const itemVariants: any = {
+  hidden: { opacity: 0, y: 32 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.54, type: "spring", stiffness: 80 } },
+};
+
 export const Footer = ({ className }: FooterProps) => {
   return (
     <footer className={cn(className, "pb-10")} id="connect">
       <Container>
-        <div className="m-auto text-center">
-          <Title>Let’s connect</Title>
+        <motion.div
+          className="m-auto text-center"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.28 }}
+        >
+          <motion.div variants={itemVariants}>
+            <Title>Let’s connect</Title>
+          </motion.div>
 
-          <p className="text-[18px] mb-[8px] text-color-text-secondary max-md:text-[14px] max-md:mb-5">
+          <motion.p
+            variants={itemVariants}
+            className="text-[18px] mb-[8px] text-color-text-secondary max-md:text-[14px] max-md:mb-5"
+          >
             Say hello at{" "}
             <a className="text-color-text-primary underline" href="mailto:matveevdenis458@gmail.com">
               matveevdenis458@gmail.com
             </a>
-          </p>
+          </motion.p>
 
-          <p className="text-[18px] mb-[38px] text-color-text-secondary max-md:text-[14px] max-md:mb-5">
+          <motion.p
+            variants={itemVariants}
+            className="text-[18px] mb-[38px] text-color-text-secondary max-md:text-[14px] max-md:mb-5"
+          >
             For more info, here’s my{" "}
             <a
               className="text-color-text-primary underline"
@@ -49,21 +76,35 @@ export const Footer = ({ className }: FooterProps) => {
             >
               resume
             </a>
-          </p>
+          </motion.p>
 
-          <div className="flex justify-center gap-6 mb-20">
+          <motion.div className="flex justify-center gap-6 mb-20" variants={itemVariants}>
             {SOCIAL_MEDIAS.map((media) => (
-              <a key={media.href} href={media.href} target="_blank" className="bg-[--color-black] p-2 rounded-[50%]">
+              <motion.a
+                key={media.href}
+                href={media.href}
+                target="_blank"
+                className="bg-[--color-black] p-2 rounded-[50%]"
+                variants={itemVariants}
+                whileHover={{
+                  scale: 1.15,
+                  boxShadow: "0 2px 15px #d3e97a30",
+                }}
+                transition={{ type: "spring", stiffness: 320 }}
+              >
                 {media.icon}
-              </a>
+              </motion.a>
             ))}
-          </div>
+          </motion.div>
 
-          <p className="flex justify-center items-center gap-[5px] text-color-text-secondary">
+          <motion.p
+            variants={itemVariants}
+            className="flex justify-center items-center gap-[5px] text-color-text-secondary"
+          >
             <Copyright size={12} />
             2025 Denys Matvieiev
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
       </Container>
     </footer>
   );
