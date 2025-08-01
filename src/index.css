@@ -1,0 +1,56 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@200..800&display=swap");
+@import "./reset.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-bebas-neue: "Bebas Neue", sans-serif;
+  --font-manrope: "Manrope", sans-serif;
+
+  /* COLORS */
+  --color-primary: #d3e97a;
+  --color-black: #0a0a0a;
+  --color-white: #fff;
+
+  --color-text-primary: #fff;
+  --color-text-secondary: #c7c7c7;
+
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #1a1a1a;
+}
+
+.light-theme {
+  --color-primary: #d3e97a;
+
+  --bg-primary: #fff;
+  --bg-secondary: #1a1a1a;
+
+  --color-text-primary: #0a0a0a;
+  --color-text-secondary: #968989;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-manrope);
+  background: var(--bg-primary);
+  color: var(--color-text-primary);
+}
+
+.technologies {
+  visibility: hidden;
+}
+
+@media (any-hover: hover) {
+  .technologies:hover > :not(:hover) {
+    opacity: 0.5;
+  }
+}
+
+.technology {
+  visibility: visible;
+}
